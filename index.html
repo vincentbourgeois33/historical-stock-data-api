@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Historical Stock Data API | Stock Analysis & Financial Statements</title>
+  <meta name="description" content="Free API for historical stock prices (OHLCV) and financial statements (income, balance sheet, cash flow). Fast JSON for traders, analysts, and developers." />
+  <meta name="keywords" content="stock analysis api,historical stock data api,ohlcv,stock prices api,financial statements api,income statement,balance sheet,cash flow,trading api,market data api" />
+
+  <!-- Open Graph (social preview) -->
+  <meta property="og:title" content="Historical Stock Data API" />
+  <meta property="og:description" content="Historical prices & fundamentals in clean JSON for stock analysis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vincentbourgeois33.github.io/historical-stock-data-api/" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0e1116/ffffff&text=Historical+Stock+Data+API" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Historical Stock Data API" />
+  <meta name="twitter:description" content="Historical prices & financial statements in fast JSON." />
+  <meta name="twitter:image" content="https://dummyimage.com/1200x630/0e1116/ffffff&text=Historical+Stock+Data+API" />
+
+  <!-- Favicon (emoji) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Ctext y='50' font-size='48'%3E%F0%9F%93%88%3C/text%3E%3C/svg%3E">
+
+  <!-- Minimal, modern CSS (no external deps) -->
+  <style>
+    :root{
+      --bg:#0e1116; --panel:#151922; --panel2:#10151e; --text:#e8eef6; --muted:#aeb6c5;
+      --primary:#7c9cff; --primary2:#6788fb; --accent:#22c55e; --border:#232938;
+      --shadow:0 12px 30px rgba(0,0,0,.35); --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--primary);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1120px;margin:0 auto;padding:32px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary),#00d4ff)}
+    nav a{margin-left:18px;color:var(--muted)} nav a:hover{color:var(--text)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin:26px 0 36px}
+    .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--border);
+      border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    h1{font-size:38px;line-height:1.15;margin:10px 0 14px}
+    p.lead{color:var(--muted);font-size:18px;margin:0 0 16px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#0b1320;border:1px solid var(--border);
+      border-radius:999px;padding:8px 12px;color:var(--muted);font-size:13px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid transparent;border-radius:12px;padding:12px 16px;font-weight:650;cursor:pointer}
+    .btn-primary{background:var(--primary);color:#0b1020} .btn-primary:hover{background:var(--primary2)}
+    .btn-ghost{border-color:var(--border);background:transparent;color:var(--text)}
+    .grid{display:grid;gap:18px}
+    .features{grid-template-columns:repeat(3,1fr);margin:10px 0 24px}
+    .two{grid-template-columns:1fr 1fr}
+    .code{background:#0a0e16;border:1px solid var(--border);border-radius:12px;padding:14px;overflow:auto}
+    pre{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;color:#e6edf3}
+    .kbd{background:#0a0e16;border:1px solid var(--border);padding:2px 6px;border-radius:6px;color:#cbd5e1}
+    .badge{display:inline-block;background:#102032;border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:13px;color:var(--muted)}
+    .price{font-size:26px;font-weight:800}
+    footer{margin:40px 0 12px;color:var(--muted);font-size:14px;text-align:center}
+    @media (max-width:960px){ .hero{grid-template-columns:1fr} .features,.two{grid-template-columns:1fr} h1{font-size:32px} }
+  </style>
+
+  <!-- JSON-LD (helps Google understand page) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Historical Stock Data API",
+    "applicationCategory":"FinanceApplication",
+    "operatingSystem":"Any",
+    "description":"Historical stock prices (OHLCV) and financial statements API for stock analysis. Fast JSON responses.",
+    "url":"https://vincentbourgeois33.github.io/historical-stock-data-api/",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">📈</div>
+        <div>
+          <strong>Historical Stock Data API</strong><br>
+          <span class="badge">Stock Analysis • OHLCV • Fundamentals</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#endpoints">Endpoints</a>
+        <a href="#examples">Examples</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <div class="pill">Fast JSON • 20+ years of prices • 10+ years of statements</div>
+        <h1>Historical Prices & Financial Statements<br/>for Stock Analysis</h1>
+        <p class="lead">Daily OHLCV and quarterly/annual fundamentals (Income, Balance, Cash Flow) for US-listed companies. Built for dashboards, screeners, and trading bots.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://rapidapi.com/vincentbourgeois33/api/macrotrends-finance1/playground/apiendpoint_c092a2fc-531f-4fbc-bd93-ee5818e8dba2" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
+          <a class="btn btn-ghost" href="#examples">See code examples</a>
+        </div>
+        <p style="margin-top:10px;color:var(--muted);font-size:13px">
+          99% success rate • cached responses • typical latency &lt; 2s after warm-up
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Quick Test</h3>
+        <div class="code"><pre><code>GET HEROKU_BASE_URL_HERE/price-history/AAPL
+GET HEROKU_BASE_URL_HERE/financial-statements/AAPL</code></pre></div>
+        <p class="lead" style="margin-top:12px">Tip: replace <span class="kbd">AAPL</span> with any US ticker (MSFT, NVDA, TSLA…).</p>
+      </div>
+    </section>
+
+    <section id="features" class="grid features">
+      <div class="card"><h3>20+ Years of Prices</h3><p>Daily OHLCV back to 2000 for major tickers. Ideal for backtests & trend analysis.</p></div>
+      <div class="card"><h3>Full Financials</h3><p>Quarterly & annual <strong>Income</strong>, <strong>Balance</strong>, and <strong>Cash Flow</strong> statements in compact JSON.</p></div>
+      <div class="card"><h3>Developer-Friendly</h3><p>Clean, minimal endpoints; small payloads (<em>columns + data</em>); examples in Python/JS.</p></div>
+    </section>
+
+    <section id="endpoints" class="grid two">
+      <div class="card">
+        <h3>GET /financial-statements/&lt;ticker&gt;</h3>
+        <p>Returns quarterly fundamentals for the ticker.</p>
+        <div class="code"><pre><code>curl -s "HEROKU_BASE_URL_HERE/financial-statements/MSFT" | head</code></pre></div>
+        <p class="lead">Response (compact):</p>
+        <div class="code"><pre><code>{
+  "income-statement": {"columns":[...],"data":[...]},
+  "balance-sheet": {"columns":[...],"data":[...]},
+  "cash-flow-statement": {"columns":[...],"data":[...]}
+}</code></pre></div>
+      </div>
+      <div class="card">
+        <h3>GET /price-history/&lt;ticker&gt;</h3>
+        <p>Returns historical OHLCV keyed by date.</p>
+        <div class="code"><pre><code>curl -s "HEROKU_BASE_URL_HERE/price-history/NVDA" | head</code></pre></div>
+        <p class="lead">Response:</p>
+        <div class="code"><pre><code>{
+  "2024-08-09": {"Open": 482.1, "High": 490.0, "Low": 480.2, "Close": 488.3, "Volume": 32123456},
+  "2024-08-08": {"Open": 475.9, "High": 484.6, "Low": 472.2, "Close": 479.0, "Volume": 28123456}
+}</code></pre></div>
+      </div>
+    </section>
+
+    <section id="examples" class="grid two">
+      <div class="card">
+        <h3>Python</h3>
+        <div class="code"><pre><code>import requests
+BASE = "HEROKU_BASE_URL_HERE"
+print(requests.get(f"{BASE}/financial-statements/AAPL").json())
+print(requests.get(f"{BASE}/price-history/AAPL").json())</code></pre></div>
+      </div>
+      <div class="card">
+        <h3>JavaScript</h3>
+        <div class="code"><pre><code>const BASE = "HEROKU_BASE_URL_HERE";
+fetch(`${BASE}/price-history/TSLA`)
+  .then(r => r.json())
+  .then(data => console.log(data));</code></pre></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="grid two">
+      <div class="card">
+        <h3>Plans</h3>
+        <p><span class="price">$0</span> / mo — <strong>Basic</strong> · 10 requests / month</p>
+        <p><span class="price">$9.99</span> / mo — <strong>Pro</strong> · 1,000 requests / month</p>
+        <p><span class="price">$19.99</span> / mo — <strong>Ultra</strong> · 5,000 requests / month</p>
+        <p><span class="price">$39.99</span> / mo — <strong>Mega</strong> · 1,000,000 requests / month</p>
+        <div class="cta" style="margin-top:8px">
+          <a class="btn btn-primary" href="RAPIDAPI_URL_HERE" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Support</h3>
+        <p>Issues & examples will be posted on the GitHub repo.</p>
+        <p>Service notes: cached responses, typical latency &lt; 2s after warm-up, 99% success rate.</p>
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> Historical Stock Data API — built for developers & analysts.</footer>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
