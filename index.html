@@ -113,8 +113,8 @@
 
       <div class="card">
         <h3 style="margin-top:0">Quick Test</h3>
-        <div class="code"><pre><code>GET HEROKU_BASE_URL_HERE/price-history/AAPL
-GET HEROKU_BASE_URL_HERE/financial-statements/AAPL</code></pre></div>
+        <div class="code"><pre><code>GET https://macrotrends-finance1.p.rapidapi.com/price-history/AAPL
+GET https://macrotrends-finance1.p.rapidapi.com/financial-statements/AAPL</code></pre></div>
         <p class="lead" style="margin-top:12px">Tip: replace <span class="kbd">AAPL</span> with any US ticker (MSFT, NVDA, TSLA…).</p>
       </div>
     </section>
@@ -129,7 +129,7 @@ GET HEROKU_BASE_URL_HERE/financial-statements/AAPL</code></pre></div>
       <div class="card">
         <h3>GET /financial-statements/&lt;ticker&gt;</h3>
         <p>Returns quarterly fundamentals for the ticker.</p>
-        <div class="code"><pre><code>curl -s "HEROKU_BASE_URL_HERE/financial-statements/MSFT" | head</code></pre></div>
+        <div class="code"><pre><code>curl -s "https://macrotrends-finance1.p.rapidapi.com/financial-statements/MSFT" | head</code></pre></div>
         <p class="lead">Response (compact):</p>
         <div class="code"><pre><code>{
   "income-statement": {"columns":[...],"data":[...]},
@@ -140,7 +140,7 @@ GET HEROKU_BASE_URL_HERE/financial-statements/AAPL</code></pre></div>
       <div class="card">
         <h3>GET /price-history/&lt;ticker&gt;</h3>
         <p>Returns historical OHLCV keyed by date.</p>
-        <div class="code"><pre><code>curl -s "HEROKU_BASE_URL_HERE/price-history/NVDA" | head</code></pre></div>
+        <div class="code"><pre><code>curl -s "https://macrotrends-finance1.p.rapidapi.com/price-history/NVDA" | head</code></pre></div>
         <p class="lead">Response:</p>
         <div class="code"><pre><code>{
   "2024-08-09": {"Open": 482.1, "High": 490.0, "Low": 480.2, "Close": 488.3, "Volume": 32123456},
@@ -153,13 +153,13 @@ GET HEROKU_BASE_URL_HERE/financial-statements/AAPL</code></pre></div>
       <div class="card">
         <h3>Python</h3>
         <div class="code"><pre><code>import requests
-BASE = "HEROKU_BASE_URL_HERE"
+BASE = "https://macrotrends-finance1.p.rapidapi.com"
 print(requests.get(f"{BASE}/financial-statements/AAPL").json())
 print(requests.get(f"{BASE}/price-history/AAPL").json())</code></pre></div>
       </div>
       <div class="card">
         <h3>JavaScript</h3>
-        <div class="code"><pre><code>const BASE = "HEROKU_BASE_URL_HERE";
+        <div class="code"><pre><code>const BASE = "https://macrotrends-finance1.p.rapidapi.com";
 fetch(`${BASE}/price-history/TSLA`)
   .then(r => r.json())
   .then(data => console.log(data));</code></pre></div>
@@ -174,7 +174,7 @@ fetch(`${BASE}/price-history/TSLA`)
         <p><span class="price">$19.99</span> / mo — <strong>Ultra</strong> · 5,000 requests / month</p>
         <p><span class="price">$39.99</span> / mo — <strong>Mega</strong> · 1,000,000 requests / month</p>
         <div class="cta" style="margin-top:8px">
-          <a class="btn btn-primary" href="RAPIDAPI_URL_HERE" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
+          <a class="btn btn-primary" href="https://rapidapi.com/vincentbourgeois33/api/macrotrends-finance1/playground/apiendpoint_c092a2fc-531f-4fbc-bd93-ee5818e8dba2" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
         </div>
       </div>
       <div class="card">
