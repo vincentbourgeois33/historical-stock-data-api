@@ -49,7 +49,7 @@
       display:grid;
       grid-template-columns:1.1fr .9fr;
       gap:28px;
-      align-items:stretch; /* makes both cards equal height */
+      align-items:stretch; /* equal height cards */
       margin:26px 0 36px;
     }
     .hero .card {
@@ -79,6 +79,7 @@
     .grid{display:grid;gap:18px}
     .features{grid-template-columns:repeat(3,1fr);margin:10px 0 24px}
     .two{grid-template-columns:1fr 1fr}
+    .three{grid-template-columns:repeat(3,1fr)}
     .code{background:#0a0e16;border:1px solid var(--border);
       border-radius:12px;padding:14px;overflow:auto}
     pre{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
@@ -90,19 +91,12 @@
     .price{font-size:26px;font-weight:800}
     footer{margin:40px 0 12px;color:var(--muted);font-size:14px;text-align:center}
 
-    /* New classes for replacing inline styles */
-    .small-muted {
-      margin-top:10px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .example-lead {
-      margin-top:12px;
-    }
+    .small-muted { margin-top:10px; color:var(--muted); font-size:13px; }
+    .example-lead { margin-top:12px; }
 
     @media (max-width:960px){
       .hero{grid-template-columns:1fr}
-      .features,.two{grid-template-columns:1fr}
+      .features,.two,.three{grid-template-columns:1fr}
       h1{font-size:32px}
     }
   </style>
@@ -139,6 +133,7 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
       <div class="card">
         <div>
@@ -148,7 +143,7 @@
         </div>
         <div>
           <div class="cta">
-            <a class="btn btn-primary" href="https://rapidapi.com/vincentbourgeois33/api/macrotrends-finance1/playground/apiendpoint_c092a2fc-531f-4fbc-bd93-ee5818e8dba2" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
+            <a class="btn btn-primary" href="https://rapidapi.com/vincentbourgeois33/api/macrotrends-finance1" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
             <a class="btn btn-ghost" href="#examples">See code examples</a>
           </div>
           <p class="small-muted">99% success rate • cached responses • typical latency &lt; 2s after warm-up</p>
@@ -163,8 +158,92 @@ GET https://macrotrends-finance1.p.rapidapi.com/financial-statements/AAPL</code>
       </div>
     </section>
 
-    <!-- Rest of sections stay same -->
-    <!-- ... keep features, endpoints, examples, pricing, footer as in your original code ... -->
+    <!-- FEATURES -->
+    <section id="features" class="grid features">
+      <div class="card"><h3>20+ Years of Prices</h3><p>Daily OHLCV back to 2000 for major tickers. Ideal for backtests & trend analysis.</p></div>
+      <div class="card"><h3>Full Financials</h3><p>Quarterly & annual <strong>Income</strong>, <strong>Balance</strong>, and <strong>Cash Flow</strong> statements in compact JSON.</p></div>
+      <div class="card"><h3>Developer-Friendly</h3><p>Clean, minimal endpoints; small payloads (<em>columns + data</em>); examples in Python/JS.</p></div>
+    </section>
+
+    <!-- ENDPOINTS -->
+    <section id="endpoints" class="grid two">
+      <div class="card">
+        <h3>GET /financial-statements/&lt;ticker&gt;</h3>
+        <p>Returns quarterly fundamentals for the ticker.</p>
+        <div class="code"><pre><code>curl --request GET \
+  --url "https://macrotrends-finance1.p.rapidapi.com/financial-statements/MSFT" \
+  --header "x-rapidapi-key: YOUR_RAPIDAPI_KEY" \
+  --header "x-rapidapi-host: macrotrends-finance1.p.rapidapi.com"</code></pre></div>
+        <p class="lead">Response (compact):</p>
+        <div class="code"><pre><code>{
+  "income-statement": {"columns":[...],"data":[...]},
+  "balance-sheet": {"columns":[...],"data":[...]},
+  "cash-flow-statement": {"columns":[...],"data":[...]}
+}</code></pre></div>
+      </div>
+
+      <div class="card">
+        <h3>GET /price-history/&lt;ticker&gt;</h3>
+        <p>Returns historical OHLCV keyed by date.</p>
+        <div class="code"><pre><code>curl --request GET \
+  --url "https://macrotrends-finance1.p.rapidapi.com/price-history/NVDA" \
+  --header "x-rapidapi-key: YOUR_RAPIDAPI_KEY" \
+  --header "x-rapidapi-host: macrotrends-finance1.p.rapidapi.com"</code></pre></div>
+        <p class="lead">Response:</p>
+        <div class="code"><pre><code>{
+  "2024-08-09": {"Open": 482.1, "High": 490.0, "Low": 480.2, "Close": 488.3, "Volume": 32123456},
+  "2024-08-08": {"Open": 475.9, "High": 484.6, "Low": 472.2, "Close": 479.0, "Volume": 28123456}
+}</code></pre></div>
+      </div>
+    </section>
+
+    <!-- EXAMPLES -->
+    <section id="examples" class="grid two">
+      <div class="card">
+        <h3>Python</h3>
+        <div class="code"><pre><code>import requests
+BASE = "https://macrotrends-finance1.p.rapidapi.com"
+headers = {
+  "x-rapidapi-key": "YOUR_RAPIDAPI_KEY",
+  "x-rapidapi-host": "macrotrends-finance1.p.rapidapi.com",
+}
+print(requests.get(f"{BASE}/financial-statements/AAPL", headers=headers).json())
+print(requests.get(f"{BASE}/price-history/AAPL", headers=headers).json())</code></pre></div>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript (Node)</h3>
+        <div class="code"><pre><code>import fetch from "node-fetch";
+const BASE = "https://macrotrends-finance1.p.rapidapi.com";
+const headers = {
+  "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+  "x-rapidapi-host": "macrotrends-finance1.p.rapidapi.com",
+};
+const res = await fetch(`${BASE}/price-history/TSLA`, { headers });
+console.log(await res.json());</code></pre></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="grid two">
+      <div class="card">
+        <h3>Plans</h3>
+        <p><span class="price">$0</span> / mo — <strong>Basic</strong> · 10 requests / month</p>
+        <p><span class="price">$9.99</span> / mo — <strong>Pro</strong> · 1,000 requests / month</p>
+        <p><span class="price">$19.99</span> / mo — <strong>Ultra</strong> · 5,000 requests / month</p>
+        <p><span class="price">$39.99</span> / mo — <strong>Mega</strong> · 1,000,000 requests / month</p>
+        <div class="cta" style="margin-top:8px">
+          <a class="btn btn-primary" href="https://rapidapi.com/vincentbourgeois33/api/macrotrends-finance1" target="_blank" rel="noopener">Subscribe on RapidAPI</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Notes</h3>
+        <p>• Cached responses after first call per ticker.</p>
+        <p>• Typical latency under 2s after warm-up.</p>
+        <p>• Use your <strong>RapidAPI key</strong> in the headers (do not paste it into public HTML).</p>
+      </div>
+    </section>
 
     <footer>© <span id="y"></span> Historical Stock Data API — built for developers & analysts.</footer>
   </div>
