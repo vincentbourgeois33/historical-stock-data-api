@@ -20,5 +20,6 @@
   "MA": "mastercard",
   "V": "visa",
   "COST": "costco",
-  "INTU": "intuit"
+  "INTU": "intuit",
+  "NOW": "servicenow"
 }
