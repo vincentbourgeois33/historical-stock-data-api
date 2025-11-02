@@ -31,5 +31,6 @@
   "PEP": "pepsico",
   "SPGI": "s-p-global",
   "ZTS": "zoetis",
-  "IBKR": "interactive-brokers"
+  "IBKR": "interactive-brokers",
+  "JPM": "jpmorgan-chase"
 }
