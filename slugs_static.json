@@ -34,5 +34,6 @@
   "IBKR": "interactive-brokers",
   "JPM": "jpmorgan-chase",
   "WMT": "walmart",
-  "HWM": "howmet-aerospace"
+  "HWM": "howmet-aerospace",
+  "WDC": "western-digital"
 }
