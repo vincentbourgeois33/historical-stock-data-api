@@ -32,5 +32,6 @@
   "SPGI": "s-p-global",
   "ZTS": "zoetis",
   "IBKR": "interactive-brokers",
-  "JPM": "jpmorgan-chase"
+  "JPM": "jpmorgan-chase",
+  "WMT": "walmart"
 }
