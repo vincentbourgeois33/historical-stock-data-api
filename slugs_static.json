@@ -33,5 +33,6 @@
   "ZTS": "zoetis",
   "IBKR": "interactive-brokers",
   "JPM": "jpmorgan-chase",
-  "WMT": "walmart"
+  "WMT": "walmart",
+  "HWM": "howmet-aerospace"
 }
