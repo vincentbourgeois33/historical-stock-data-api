@@ -24,5 +24,6 @@
   "NOW": "servicenow",
   "F": "ford-motor",
   "ANET": "arista-networks",
-  "CCJ": "cameco"
+  "CCJ": "cameco",
+  "CRM": "salesforce"
 }
